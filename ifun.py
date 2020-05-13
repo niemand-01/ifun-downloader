@@ -51,18 +51,20 @@ def buildconcat(m,name):
 
 
 if __name__ == "__main__":
-    url = input("请复制输入想要的视频url")
-    name = input("请输入想要的视频名字")
+    while True:
+        url = input("请复制输入想要的视频url")
+        name = input("请输入想要的视频名字")
 
-    lastidx = downloadts(url,name)
+        lastidx = downloadts(url,name)
     #lastidx = 17
-    outpath = './out1/'+name+'.ts'
-    if os.path.isdir('./out1'):
-        ffmpeg.input(buildconcat(lastidx,name)).output('./out1/'+name+'.ts', c='copy').run()
-    else:
-        os.mkdir('./out1')
-        ffmpeg.input(buildconcat(lastidx,name)).output('./out1/'+name+'.ts', c='copy').run()
+        outpath = './out1/'+name+'.ts'
+        if os.path.isdir('./out1'):
+            ffmpeg.input(buildconcat(lastidx,name)).output('./out1/'+name+'.ts', c='copy').run()
+        else:
+            os.mkdir('./out1')
+            ffmpeg.input(buildconcat(lastidx,name)).output('./out1/'+name+'.ts', c='copy').run()
 
-    #remove dir
-    print('cleaning up file')
-    shutil.rmtree('./'+name)
+        #remove dir
+        print('cleaning up file')
+        shutil.rmtree('./'+name)
+
