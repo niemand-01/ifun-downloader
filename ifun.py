@@ -3,6 +3,8 @@ import urllib.request
 import os
 import time
 import shutil
+
+from selenium_test import get_video_url
 #download video
 
 
@@ -52,7 +54,8 @@ def buildconcat(m,name):
 
 if __name__ == "__main__":
     while True:
-        url = input("请复制输入想要的视频url")
+        weburl = input("请复制输入想要的视频url")
+        url = get_video_url(weburl)
         name = input("请输入想要的视频名字")
 
         lastidx = downloadts(url,name)
